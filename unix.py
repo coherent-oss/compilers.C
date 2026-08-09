@@ -27,10 +27,10 @@ from typing import ClassVar
 
 from jaraco.functools import pass_none
 
-from .._modified import newer
-from ..logging import get_logger
-from ..platform import macos
-from ..platform.macos import compiler_fixup
+from compilers.common._modified import newer
+from compilers.common.logging import get_logger
+from compilers.common.platform import macos
+from compilers.common.platform.macos import compiler_fixup
 from . import base
 from .base import _Macro, gen_lib_options, gen_preprocess_options
 from .errors import CompileError, LibError, LinkError
@@ -442,7 +442,7 @@ class Compiler(base.Compiler):
         # the configuration data stored in the Python installation, so
         # we use this hack.
         if sys.platform[:6] == "darwin":
-            from ..platform import macos
+            from compilers.common.platform import macos
 
             target_ver = macos.target_ver()
             if target_ver and [int(n) for n in target_ver.split('.')] >= [10, 5]:

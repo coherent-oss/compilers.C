@@ -1,6 +1,6 @@
 """Exceptions raised by the C/C++ compilers."""
 
-from ..errors import Error
+from compilers.errors import Error
 
 
 class PreprocessError(Error):

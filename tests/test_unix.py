@@ -8,8 +8,8 @@ from unittest import mock
 import pytest
 from test.support import os_helper
 
-from ... import errors
-from ...platform import macos
+from compilers import errors
+from compilers.common.platform import macos
 from .. import unix
 
 

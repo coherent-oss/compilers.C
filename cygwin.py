@@ -19,9 +19,9 @@ from sysconfig import get_config_vars
 
 import packaging.version
 
-from ..errors import Error, PlatformError
-from ..logging import get_logger
-from ..platform.detect import is_mingw
+from compilers.errors import Error, PlatformError
+from compilers.common.logging import get_logger
+from compilers.common.platform.detect import is_mingw
 from . import unix
 from .errors import CompileError
 

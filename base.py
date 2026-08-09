@@ -23,12 +23,12 @@ from typing import (
 
 from more_itertools import always_iterable
 
-from .._modified import newer_group
-from .._util import split_quoted
-from ..errors import PlatformError, UnknownFileType
-from ..logging import get_logger
-from ..platform import macos
-from ..platform.detect import is_mingw
+from compilers.common._modified import newer_group
+from compilers.common._util import split_quoted
+from compilers.errors import PlatformError, UnknownFileType
+from compilers.common.logging import get_logger
+from compilers.common.platform import macos
+from compilers.common.platform.detect import is_mingw
 from .errors import CompileError, LinkError
 
 log = get_logger(__name__)
@@ -1186,7 +1186,7 @@ int main (int argc, char **argv) {{
         )
         # translation shared with distutils.spawn.spawn; imported late so the
         # clean `call` path stays free of the distutils dependency.
-        from ...spawn import _translate_errors
+        from distutils.spawn import _translate_errors
 
         with _translate_errors(cmd):
             self.call(cmd, env=env, **kwargs)
