@@ -25,12 +25,12 @@ import sysconfig
 from collections.abc import Iterable
 from typing import ClassVar
 
-from jaraco.functools import pass_none
-
 from compilers.common._modified import newer
 from compilers.common.logging import get_logger
 from compilers.common.platform import macos
 from compilers.common.platform.macos import compiler_fixup
+from jaraco.functools import pass_none
+
 from . import base
 from .base import _Macro, gen_lib_options, gen_preprocess_options
 from .errors import CompileError, LibError, LinkError

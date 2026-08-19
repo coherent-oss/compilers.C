@@ -21,14 +21,14 @@ from typing import (
     overload,
 )
 
-from more_itertools import always_iterable
-
 from compilers.common._modified import newer_group
 from compilers.common._util import split_quoted
-from compilers.errors import PlatformError, UnknownFileType
 from compilers.common.logging import get_logger
 from compilers.common.platform import macos
 from compilers.common.platform.detect import is_mingw
+from compilers.errors import PlatformError, UnknownFileType
+from more_itertools import always_iterable
+
 from .errors import CompileError, LinkError
 
 log = get_logger(__name__)

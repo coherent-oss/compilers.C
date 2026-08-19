@@ -1,9 +1,9 @@
 import pytest
-
 from compilers import errors
 from compilers.common._util import split_quoted
-from compilers.errors import PlatformError
 from compilers.common.platform.detect import is_mingw
+from compilers.errors import PlatformError
+
 from .. import cygwin
 
 

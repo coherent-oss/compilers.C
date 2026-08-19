@@ -4,9 +4,9 @@ import sysconfig
 import threading
 
 import pytest
-
-from compilers.errors import PlatformError
 from compilers.common.platform.detect import get_platform
+from compilers.errors import PlatformError
+
 from .. import msvc
 
 needs_winreg = pytest.mark.skipif('not hasattr(msvc, "winreg")')

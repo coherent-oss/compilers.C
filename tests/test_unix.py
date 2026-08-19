@@ -6,10 +6,10 @@ import sysconfig
 from unittest import mock
 
 import pytest
-from test.support import os_helper
-
 from compilers import errors
 from compilers.common.platform import macos
+from test.support import os_helper
+
 from .. import unix
 
 
