@@ -1141,7 +1141,9 @@ int main (int argc, char **argv) {{
         log.debug(msg)
 
     def debug_print(self, msg: object) -> None:
-        from distutils.debug import DEBUG
+        # distutils is supplied by the consumer on this legacy path; don't
+        # infer it as a dependency (coherent-oss/compilers.C#1).
+        from distutils.debug import DEBUG  # deps: ignore[inferred-dependency]
 
         if DEBUG:
             print(msg)
@@ -1185,10 +1187,11 @@ int main (int argc, char **argv) {{
             stacklevel=2,
         )
         # translation shared with distutils.spawn.spawn; imported late so the
-        # clean `call` path stays free of the distutils dependency.
-        from distutils.spawn import _translate_errors
+        # clean `call` path stays free of the distutils dependency, which the
+        # consumer supplies here, so it isn't inferred (coherent-oss/compilers.C#1).
+        from distutils import spawn  # deps: ignore[inferred-dependency]
 
-        with _translate_errors(cmd):
+        with spawn._translate_errors(cmd):
             self.call(cmd, env=env, **kwargs)
 
     @overload
