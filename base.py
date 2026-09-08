@@ -1141,7 +1141,8 @@ int main (int argc, char **argv) {{
         log.debug(msg)
 
     def debug_print(self, msg: object) -> None:
-        from distutils.debug import DEBUG
+        # distutils is supplied by the consumer on this legacy path
+        from distutils.debug import DEBUG  # deps: ignore[inferred-dependency]
 
         if DEBUG:
             print(msg)
@@ -1185,8 +1186,10 @@ int main (int argc, char **argv) {{
             stacklevel=2,
         )
         # translation shared with distutils.spawn.spawn; imported late so the
-        # clean `call` path stays free of the distutils dependency.
-        from distutils.spawn import _translate_errors
+        # clean `call` path stays free of the distutils dependency
+        from distutils.spawn import (  # deps: ignore[inferred-dependency]
+            _translate_errors,
+        )
 
         with _translate_errors(cmd):
             self.call(cmd, env=env, **kwargs)
